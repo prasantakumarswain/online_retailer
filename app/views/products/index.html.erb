@@ -1,0 +1,43 @@
+<div class="clearfix">
+  <h1>Top Products</h1>
+  <ul style = "border: 1px solid; padding: 5px;">
+  <% @top_products.each do |product| %>
+    <li style="margin-right: 10px; width: 110px; list-style: none; display: inline-block;">
+    <%#= image_tag product.photo.url(:thumb), :style => "display:block; height:100px; width: 100px;" %>
+    <img src="/assets/default.jpg" style="display:block; height:100px; width: 100px;">
+    <%= link_to product.name, product_path(product)%>
+    </li>
+  <% end %>
+</ul>
+</div>
+<div class="clearfix">
+<h1 class="pull-left">Products</h1>
+<%= form_tag products_path, :method => 'get', class: "pull-right" do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+<% end %>
+</div>
+<hr>
+<div>
+  <% @products.each do |product| %>
+    <div style="border-bottom: 1px solid black; padding:10px;" class="clearfix">
+      <div style="float:left; margin-right: 10px;">
+      <%#= image_tag product.photo.url(:thumb) %>
+      <img src="/assets/default.jpg" style="display:block; height:100px; width: 100px;">
+      </div>
+      <div>
+        <%= link_to product.name, product_path(product)%>
+        <div>$<%= product.price%></div>
+        <div><%= product.description.to_s.truncate(200) %></div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<br />
+<div class="pull-right">
+<%= link_to 'New Product', new_product_path %> <br>
+<%= will_paginate @products %>
+</div>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OnlineRetailer</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "bootstrap.css" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container" style="margin-bottom: 60px;">
+	<div class="row">
+		<div class="span12">
+			<h1 >ONLINE RETAILER</h1>
+			<hr>
+			<%= yield %>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

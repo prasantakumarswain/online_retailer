@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row" style="border-bottom: 2px solid #000; padding-bottom: 10px;">
+  <div class="span12"><%= @product.name %></div>
+  <div class="span12">
+    <div class="row">
+    <div class="span3">
+      <%#= image_tag @product.photo.url, :style => "display:block;" %>
+      <img src="/assets/default.jpg" style="display:block;">
+      Price: $<%= @product.price %></br>
+      Availability: <%= @product.available ? "In Stock" : "Out of Stock" %> 
+    </div>
+    <div class="span9">
+      <%= @product.description %>
+    </div>      
+    </div>
+  </div>
+</div>
+<div class="pull-right">
+  <%= link_to 'Edit', edit_product_path(@product) %> |
+  <%= link_to 'Back to list', products_path %>
+</div>
+
+<div class="row">
+<h1>Reviews</h1>
+<hr>
+<% @reviews.each do |review|%>
+<div style="border-bottom: 1px solid black; margin:10px;">
+<strong><%= review.customer_name + ": "%></strong><%= review.content %>
+</div>
+<% end %>
+</div>
+<div class="pull-right">
+<h2>Add Review</h2>
+<%= form_tag("/reviews", method: "post", id: "reviews") do  %>
+    <div class="field">
+      <%= label_tag :Name %><br/>
+      <%= text_field_tag(:customer_name) %>
+    </div>
+    <div class="field">
+       <%= label_tag :content %><br/>
+      <%= text_area_tag(:content) %>
+    </div>
+    <%= hidden_field_tag 'product_id', @product.id %>
+    <div class="actions">
+      <%= submit_tag("Submit", :class => "btn, btn-success") %>
+    </div>
+<% end %>
+</div>
+

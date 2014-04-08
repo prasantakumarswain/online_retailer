@@ -1,0 +1,9 @@
+<% @reviews.each do |review| %>
+    <p>
+      <b> review</b>
+      <%= review.customer_name %>
+      <b>content</b>
+      <%= review.content %>
+    </p>
+<% end %>
+<%= link_to "Add Review",new_review_path%>
