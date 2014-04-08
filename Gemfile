@@ -6,7 +6,12 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 #gem 'mysql2'
-gem 'pg'
+gem 'mysql2'
+
+
+group :production do
+  gem 'pg'
+end
 gem 'will_paginate'
 #gem 'hirb'
 #gem "paperclip", "~> 4.1"
